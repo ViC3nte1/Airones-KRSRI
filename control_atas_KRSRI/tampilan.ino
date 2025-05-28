@@ -1,0 +1,62 @@
+void tampilan() {
+   int16_t distance_u1 = URM09.getDistance();
+  ultra_u2();
+  ultra_u3();
+  int16_t distance_u4 = URM08.getDistance();
+  ultra_u5();
+  ultra_u6();
+   int16_t distance_u7 = URM07.getDistance();
+  ultra_u8();
+  ultra_gpr();
+
+  kalibrasi_ultra();
+  //warna();
+  int rgb = (redValue + greenValue + blueValue) / 3;
+ infra_red(); 
+
+  BNO::sAxisAnalog_t   sAccAnalog, sMagAnalog, sGyrAnalog, sLiaAnalog, sGrvAnalog;
+  BNO::sEulAnalog_t    sEulAnalog;
+  sEulAnalog = bno.getEul();
+
+  lcd.clearDisplay();
+  lcd.setTextSize(1);
+  lcd.setTextColor(WHITE);
+  lcd.setCursor(0, 0);
+  lcd.print(set_poin);
+  lcd.setCursor(45, 0);
+  lcd.print(sEulAnalog.head);
+  lcd.setCursor(0, 10);
+  lcd.print("u1 :");
+  lcd.print(distance_u1);
+  lcd.setCursor(45, 10);
+  lcd.print("u2 :");
+  lcd.print(distance_u2);
+  lcd.setCursor(90, 10);
+  lcd.print("u3 :");
+  lcd.print(distance_u3);
+  lcd.setCursor(0, 20);
+  lcd.print("u4 :");
+  lcd.print(distance_u4);
+  lcd.setCursor(45, 20);
+  lcd.print("u5 :");
+  lcd.print(distance_u5);
+  lcd.setCursor(90, 20);
+  lcd.print("u6:");
+  lcd.println(distance_u6);
+  lcd.setCursor(0, 30);
+  lcd.print("u7:");
+  lcd.println(distance_u7);
+  lcd.setCursor(45, 30);
+  lcd.print("u8:");
+  lcd.println(distance_u8);
+  lcd.setCursor(90, 30);
+  lcd.print("gpr:");
+  lcd.println(distance_gpr);
+  lcd.setCursor(0, 50);
+  lcd.print("ir1:");
+  lcd.println(buttonstate2);
+  lcd.setCursor(45, 50);
+  lcd.print("Grn:");
+  lcd.println(greenValue);
+  lcd.display();
+}
